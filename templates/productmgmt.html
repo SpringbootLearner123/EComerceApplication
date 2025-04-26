@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 style="text-align: center"> Product Management</h2>
+    <br>
+    <table class="table table-responsive">
+    <tr>
+
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Product Picture</th>
+
+         <th>Delete</th>
+    </tr>
+
+       {% for x in data %}
+<tr>
+
+            <td>{{ x.pname }}</td>
+            <td>{{ x.pprice }}</td>
+    <td><img src="../{{ x.ppic }}" height="60px" width="70px"/> </td>
+ <td><a href="/delProduct/{{ x.id }}"><span class="fa fa-trash-o" style="color:red;font-size: 18px"></span></a></td>
+           </tr>
+       {% endfor %}
+
+
+    </table>
+{% endblock %}

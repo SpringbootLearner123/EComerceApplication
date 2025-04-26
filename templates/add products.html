@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 style="text-align: center">Add Order</h2>
+    <br>
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="border: 2px solid blue;padding: 10px">
+        <form action="/addpData/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        Product Name
+            <input type="text" name="product" class="form-control" required/>
+            Product Price (in $ )
+            <input type="number" class="form-control" name="pprice"/>
+            Product Picture
+            <input type="file" class="form-control" name="ppic"/>
+            <br><br>
+            <button class="btn btn-danger">Add Now</button>
+            </form>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+{% endblock %}

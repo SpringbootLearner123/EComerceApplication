@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 style="text-align: center">Change Password</h2>
+    <br>
+    <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="border: 2px solid blue;padding: 10px">
+        <form action="/changepData/" method="post">
+            {% csrf_token %}
+        Old Password
+            <input type="password" name="opass" class="form-control" required/>
+           New Password
+            <input type="password" class="form-control" name="npass" required/>
+          Confirm Password
+            <input type="password" class="form-control" name="cpass" required/>
+            <br><br>
+            <button class="btn btn-danger">Change Password</button>
+            </form>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+{% endblock %}

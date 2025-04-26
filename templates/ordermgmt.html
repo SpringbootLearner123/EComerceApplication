@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 style="text-align: center"> Order Management</h2>
+    <br>
+    <table class="table table-responsive">
+    <tr>
+
+        <th>Name</th>
+        <th>Mobile Number</th>
+        <th>Land Mark</th>
+        <th>Town/City</th>
+        <th>Address Type</th>
+         <th>Delete</th>
+    </tr>
+
+       {% for x in data %}
+<tr>
+       <td>{{ x.fname }}</td>
+            <td>{{ x.mob }}</td>
+            <td>{{ x.lmark }}</td>
+            <td>{{ x.town }}</td>
+            <td>{{ x.atype }}</td>
+ <td><a href="/delOrder/{{ x.id }}"><span class="fa fa-trash-o" style="color:red;font-size: 18px"></span></a></td>
+           </tr>
+       {% endfor %}
+
+
+    </table>
+{% endblock %}
