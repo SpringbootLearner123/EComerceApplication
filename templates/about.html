@@ -1,0 +1,485 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="{% static "images/sn.png" %}"/>
+<title>About Us</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Grocery Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="{% static "css/bootstrap.css" %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
+<!-- font-awesome icons -->
+<link href="{% static "css/font-awesome.css" %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //font-awesome icons -->
+<!-- js -->
+<script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+<!-- //js -->
+<link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src="{% static "js/move-top.js" %}"></script>
+<script type="text/javascript" src="{% static "js/easing.js" %}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+</head>
+	
+<body>
+<!-- header -->
+	<div class="agileits_header">
+		<div class="w3l_offers">
+			<a href="/brands">Today's special Offers !</a>
+		</div>
+		<div class="w3l_search">
+			<form action="#" method="post">
+				<input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+				<input type="submit" value=" ">
+			</form>
+		</div>
+		<div class="product_list_header">  
+			<form action="#" method="post" class="last">
+                <fieldset>
+                    <input type="hidden" name="cmd" value="_cart" />
+                    <input type="hidden" name="display" value="1" />
+                    <input type="submit" name="submit" value="View your cart" class="button" />
+                </fieldset>
+            </form>
+		</div>
+		<div class="w3l_header_right">
+			<ul>
+				<li class="dropdown profile_details_drop">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+					<div class="mega-dropdown-menu">
+						<div class="w3ls_vegetables">
+							<ul class="dropdown-menu drp-mnu">
+								<li><a href="/loginreg">Login</a></li>
+								<li><a href="/loginreg">Sign Up</a></li>
+							</ul>
+						</div>                  
+					</div>	
+				</li>
+			</ul>
+		</div>
+		<div class="w3l_header_right1">
+			<h2><a href="/contact">Contact Us</a></h2>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+<!-- script-for sticky-nav -->
+	<script>
+	$(document).ready(function() {
+		 var navoffeset=$(".agileits_header").offset().top;
+		 $(window).scroll(function(){
+			var scrollpos=$(window).scrollTop(); 
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
+			}
+		 });
+		 
+	});
+	</script>
+<!-- //script-for sticky-nav -->
+	<div class="logo_products">
+		<div class="container">
+			<div class="w3ls_logo_products_left">
+				<h1><a href="index.html"><span>Grocery</span> Store</a></h1>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="special_items">
+					<li><a href="/event">Events</a><i>/</i></li>
+					<li><a href="/about">About Us</a><i>/</i></li>
+					<li><a href="/brands">Best Deals</a><i>/</i></li>
+					<li><a href="/services">Services</a></li>
+				</ul>
+			</div>
+			<div class="w3ls_logo_products_left1">
+				<ul class="phone_email">
+					<li><i class="fa fa-phone" aria-hidden="true"></i>+91 7880992170</li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="hhk78692@gmail.com">hhk78692@gmail.com</a></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //header -->
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="../">Home</a><span>|</span></li>
+				<li>About Us</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		<div class="w3l_banner_nav_left">
+			<nav class="navbar nav_bottom">
+			 <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header nav_2">
+				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+			   </div> 
+			   <!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav nav_1">
+						<li><a href="/brands">Branded Foods</a></li>
+						<li><a href="/househ">Households</a></li>
+						<li class="dropdown mega-dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Veggies & Fruits<span class="caret"></span></a>
+							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+								<div class="w3ls_vegetables">
+									<ul>
+										<li><a href="/vegi">Vegetables</a></li>
+										<li><a href="/vegi">Fruits</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="/kitchen">Kitchen</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Beverages<span class="caret"></span></a>
+							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+								<div class="w3ls_vegetables">
+									<ul>
+										<li><a href="/sftdrink">Soft Drinks</a></li>
+										<li><a href="/sftdrink">Juices</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="/pets">Pet Food</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Frozen Foods<span class="caret"></span></a>
+							<div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
+								<div class="w3ls_vegetables">
+									<ul>
+										<li><a href="/frozen">Frozen Snacks</a></li>
+										<li><a href="/frozen">Frozen Nonveg</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li><a href="/breads">Bread & Bakery</a></li>
+					</ul>
+				 </div><!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="w3l_banner_nav_right">
+<!-- about -->
+		<div class="privacy about">
+			<h3>About Us</h3>
+			<p class="animi">Grofers is India’s largest low price online supermarket in the grocery space.
+                The company uses its in-house technology platform to manage a network of over 5,00 partner stores that enable the company to run a
+                fast and lean supply chain – from manufacturers straight to customers in 27+
+                cities namely Agra, Ahmedabad, Aligarh, Allahabad, Asansol, Bengaluru, Bhiwadi, Chandigarh, Chennai,
+                Delhi, Durgapur, Faridabad, Guwahati, Hapur, HR-NCR, Hyderabad, Indore, Jaipur, Kanpur, Kolkata, Lucknow. Grofers utilizes its efficient
+                supply chain to deliver over 25 million products to customers every month. A majority of these products belong to the company’s
+                8 in house brands namely Grofers Happy Day, Grofers Happy Home, Grofers Mothers choice, Grofers Happy Baby, G Fresh, O’range and
+                budget brands Savemore and Havemore.
+
+              It is hereby clarified that Grofers India Private Limited does not have any relation with the mark ‘GROFFR’,
+                which (we are given to understand) is used by Redstone Consultancy Services Pvt Ltd for its real estate services business,
+                which is not related to Grofers India Private Limited in any manner.</p>
+			<div class="agile_about_grids">
+				<div class="col-md-6 agile_about_grid_right">
+					<img src="{% static "images/31.jpg" %}" alt=" " class="img-responsive" />
+				</div>
+				<div class="col-md-6 agile_about_grid_left">
+					<ol>
+						<li>Fast & safe delivery</li>
+						<li>Healthy and fresh product</li>
+						<li>Fresh and pure product</li>
+						<li>Free home delivery</li>
+						<li>Best services</li>
+						<li>Affordable product</li>
+					</ol>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+<!-- //about -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+<!-- team -->
+	<div class="team">
+		<div class="container">
+			<h3>Meet Our Amazing Team</h3>
+			<div class="agileits_team_grids">
+				<div class="col-md-3 agileits_team_grid">
+					<img src="{% static "image/hasnain.jpg" %}" alt=" " class="img-responsive" />
+					<h4>Hasnain Haidar</h4>
+					<p>Manager</p>*/
+					<ul class="agileits_social_icons agileits_social_icons_team">
+						<li><a href="#" target="_blank" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#" target="_blank" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 agileits_team_grid">
+					<img src="{% static "images/satyam.jpg" %}" alt=" " class="img-responsive" />
+					<h4>Satyam</h4>
+					<p>Member</p>
+					<ul class="agileits_social_icons agileits_social_icons_team">
+						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 agileits_team_grid">
+					<img src="{% static "images/pawan.jpg" %}" alt=" " class="img-responsive" />
+					<h4>Pawan Kushwaha</h4>
+					<p>Member</p>
+					<ul class="agileits_social_icons agileits_social_icons_team">
+						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 agileits_team_grid">
+					<img src="{% static "images/sanchit.jfif" %}" style="height: 255px" alt=" " class="img-responsive" />
+					<h4>Sanchit Singh</h4>
+					<p>Member</p>
+					<ul class="agileits_social_icons agileits_social_icons_team">
+						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //team -->
+<!-- testimonials -->
+	<div class="testimonials">
+		<div class="container">
+			<h3>Testimonials</h3>
+				<div class="w3_testimonials_grids">
+					<div class="wmuSlider example1 animated wow slideInUp" data-wow-delay=".5s">
+						<div class="wmuSliderWrapper">
+							<article style="position: absolute; width: 100%; opacity: 0;"> 
+								<div class="banner-wrap">
+									<div class="col-md-6 w3_testimonials_grid">
+										<p><i class="fa fa-quote-right" aria-hidden="true"></i>Everything is almost perfect, the website/app designed,
+                                            your service etc. But I would like to give a suggestion to include 'Notify me' option on things which are
+                                            not currently available (on 'Previously Bought by You' list). Dont exclude it if it's not available, at
+                                            least list it as 'currently not available' if 'notify me' option is difficult. Do this feature for both
+                                            website and app Thanks Grofers!!! 😀❤️</p>
+										<h4>Anil<span>Customer</span></h4>
+									</div>
+									<div class="col-md-6 w3_testimonials_grid">
+										<p><i class="fa fa-quote-right" aria-hidden="true"></i>It's a great app. Very well maintained. It is so user friendly - be it
+                                            recharging, selecting items, searching items, placing orders or chatting with customer
+                                            care to resolve issues. In this lockdown you guys have been our ultimate saviours. Your service is so awesome.
+                                            I couldn't have asked for anyth...
+											repellat.</p>
+										<h4>Ankit<span>Customer</span></h4>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</article>
+							<article style="position: absolute; width: 100%; opacity: 0;"> 
+								<div class="banner-wrap">
+									<div class="col-md-6 w3_testimonials_grid">
+										<p><i class="fa fa-quote-right" aria-hidden="true"></i>Extremely useful service!! Although the app has some glitches and needs some
+                                            work to be be done. The service provided by BB daily is a life
+                                            saver. You get veggies, milk and other items delivered at your door even in the hard times of lockdown these guys made it possible.
+                                            Many people can argue over t...</p>
+										<h4>Antika<span>Customer</span></h4>
+									</div>
+									<div class="col-md-6 w3_testimonials_grid">
+										<p><i class="fa fa-quote-right" aria-hidden="true"></i>easy to use..easy to chat with customer care. It was a life saver for me in quarantine
+                                            period. I totally relied on BB for my daily needs. Also they
+                                            trust us in case of our complaint and refund money without any arguments. Till now your services are very good and hope it will remain
+                                            the sa...</p>
+										<h4>Himanshu<span>Customer</span></h4>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</article>
+							<article style="position: absolute; width: 100%; opacity: 0;"> 
+								<div class="banner-wrap">
+									<div class="col-md-6 w3_testimonials_grid">
+										<p><i class="fa fa-quote-right" aria-hidden="true"></i>Nowadays, non milk items are also delivered, IT'S GREAT. Search
+                                            conditions require more simplification, so that person with little knowledge can also search easily.
+                                            Zoom in and zoom out facility for selected item's icon and its description page should be provided so that viewer gets clear pic/detail...</p>
+										<h4>Pari<span>Customer</span></h4>
+									</div>
+									<div class="col-md-6 w3_testimonials_grid">
+										<p><i class="fa fa-quote-right" aria-hidden="true"></i>\Very prompt accounting and balancing for the products delivered/un-delivered,
+                                            Not a single time there was any confusion regarding Dr/Cr in the account. For Chat section, there is always one to attend your query, wait
+                                            period is negligible to start the chat Enjoying the services</p>
+										<h4>Abhishek<span>Customer</span></h4>
+									</div>
+									<div class="clearfix"> </div>
+								</div>
+							</article>
+						</div>
+					</div>
+					<script src="{% static "js/jquery.wmuSlider.js" %}"></script>
+					<script>
+						$('.example1').wmuSlider();         
+					</script> 
+				</div>
+		</div>
+	</div>
+<!-- //testimonials -->
+<!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
+			<div class="w3agile_newsletter_left">
+				<h3>Join Our Newsletter New</h3>
+			</div>
+			<div class="w3agile_newsletter_right">
+				<form action="/UserMail/" method="post">
+                    {% csrf_token %}
+					<input type="email" name="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<input type="submit" value="subscribe now">
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //newsletter -->
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-3 w3_footer_grid">
+				<h3>information</h3>
+				<ul class="w3_footer_grid_list">
+					<li><a href="/event">Events</a></li>
+					<li><a href="/about">About Us</a></li>
+					<li><a href="/brands">Best Deals</a></li>
+					<li><a href="/services">Services</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 w3_footer_grid">
+				<h3>policy info</h3>
+				<ul class="w3_footer_grid_list">
+					<li><a href="/faqs">FAQ</a></li>
+					<li><a href="/privacy">privacy policy</a></li>
+					<li><a href="/privacy">terms of use</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 w3_footer_grid">
+				<h3>what in stores</h3>
+				<ul class="w3_footer_grid_list">
+					<li><a href="/pets">Pet Food</a></li>
+					<li><a href="/frozen">Frozen Snacks</a></li>
+					<li><a href="/kitchen">Kitchen</a></li>
+					<li><a href="/brands">Branded Foods</a></li>
+					<li><a href="/househ">Households</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 w3_footer_grid">
+				<h3>Address</h3>
+				<ul class="w3_footer_grid_list1">
+					<li><label class="fa fa-map-marker" aria-hidden="true"></label><br>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+			<div class="agile_footer_grids">
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h4>100% secure payments</h4>
+						<img src="{% static "images/card.png" %}" alt=" " class="img-responsive" />
+					</div>
+				</div>
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h5>connect with us</h5>
+						<ul class="agileits_social_icons">
+							<li><a href="#" target="_blank" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#" target="_blank" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a class="google" href="#" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+							<li><a href="#" target="_blank" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="wthree_footer_copy">
+				<p>© 2020 Grocery Store. All rights reserved |Developed and Design by <a href="#" target="_blank">HPSS Team</a></p>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');
+        }
+    );
+});
+</script>
+<!-- here stars scrolling icon -->
+	<script type="{% static "text/javascript" %}">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+<script src="{% static "js/minicart.js" %}"></script>
+<script>
+		paypal.minicart.render();
+
+		paypal.minicart.cart.on('checkout', function (evt) {
+			var items = this.items(),
+				len = items.length,
+				total = 0,
+				i;
+
+			// Count the number of each item in the cart
+			for (i = 0; i < len; i++) {
+				total += items[i].get('quantity');
+			}
+
+			if (total < 3) {
+				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+				evt.preventDefault();
+			}
+		});
+
+	</script>
+</body>
+</html>

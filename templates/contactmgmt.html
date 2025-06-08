@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2 style="text-align: center">Contact Management</h2>
+    <br>
+    <table class="table table-responsive">
+    <tr>
+
+        <th>Name</th>
+        <th>Mobile Number</th>
+        <th>Email Address</th>
+        <th>Subject</th>
+        <th>Message</th>
+         <th>Delete</th>
+    </tr>
+
+       {% for x in data %}
+<tr>
+       <td>{{ x.name }}</td>
+            <td>{{ x.mob }}</td>
+            <td>{{ x.email }}</td>
+            <td>{{ x.subj }}</td>
+            <td>{{ x.msg }}</td>
+    <td><a href="/delContact/{{ x.id }}"><span class="fa fa-trash-o" style="color:red;font-size: 18px"></span></a></td>
+           </tr>
+       {% endfor %}
+
+
+    </table>
+{% endblock %}
