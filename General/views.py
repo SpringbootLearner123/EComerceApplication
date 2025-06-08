@@ -1,139 +1,174 @@
-from django.shortcuts import render,HttpResponse,redirect
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import status
+from .models import contactModel, ProductModel,signupdata
+from django.contrib.sessions.models import Session
+
+# Sample serializers (You need to create these)
+from .serializers import ContactSerializer, ProductSerializer
+
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.models import User
-from General.forms import contactForm,aloginForm
-from General.models import contactModel,ALogin,userdata,ProductModel,signupdata
-from django.core.mail import send_mail
-# Create your views here.
+import json
 
 
-def index(request):
-    return render(request,"index.html")
-
-
-def brandf(request):
-    return  render(request,"products.html")
-
-def household(request):
-    return  render(request,"household.html")
-
-
-def vegetables(request):
-    return  render(request,"vegetables.html")
-
-
-def kitchen(request):
-    return  render(request,"kitchen.html")
-
-
-def softdrink(request):
-    return  render(request,"drinks.html")
-
-def petfood(request):
-    return  render(request,"pet.html")
-
-def frozen(request):
-    return  render(request,"frozen.html")
-
-def breadb(request):
-    return  render(request,"bread.html")
-
-def events(request):
-    return  render(request,"events.html")
-
-def about(request):
-    return  render(request,"about.html")
-
-def services(request):
-    return render(request,"services.html")
-
-def contact(request):
-    form=contactForm()
-    return render(request,"mail.html",{"form":form})
-
-def ContactData(request):
-    if request.method=='POST':
-            name=request.POST.get("name")
-            mob=request.POST.get("mob")
-            email=request.POST.get("email")
-            subj=request.POST.get("subj")
-            msg=request.POST.get("msg")
-            cm=contactModel(name=name,mob=mob,email=email,subj=subj,msg=msg)
-            cm.save()
-            return HttpResponse("<script>alert('Thanks for contact as soon as we contact you ');window.location.href='/contact'</script>")
+# Dashboard API
+@api_view(['GET'])
+def dashboard_api(request):
+    if request.session.get("aid"):
+        return Response({"message": "Welcome to the Dashboard"}, status=status.HTTP_200_OK)
     else:
-      return HttpResponse(
-       "<script>alert('Your Request is not completed');window.location.href='/contact'</script>")
+        return Response({"error": "Unauthorized. Login first."}, status=status.HTTP_401_UNAUTHORIZED)
 
+# Contact Management API
+@api_view(['GET'])
+def contact_mgmt_api(request):
+    if request.session.get("aid"):
+        contacts = contactModel.objects.all()
+        serializer = ContactSerializer(contacts, many=True)
+        return Response(serializer.data)
+    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
-
-def loginreg(request):
-    return  render(request,"login.html")
-
-def loginData(request):
-    if request.method=='POST':
-        userid=request.POST.get("Username")
-        passwd=request.POST.get("passwd")
+# Delete Contact API
+@api_view(['DELETE'])
+def delete_contact_api(request, id):
     try:
-        lg=ALogin.objects.get(userid=userid)
-        if lg.userid == userid and lg.passwd == passwd:
-                request.session["aid"]=userid    #set the session values
+        contact = contactModel.objects.get(id=id)
+        contact.delete()
+        return Response({"message": "Contact deleted"}, status=status.HTTP_200_OK)
+    except contactModel.DoesNotExist:
+        return Response({"error": "Contact not found"}, status=status.HTTP_404_NOT_FOUND)
 
-                return HttpResponse(
-                    "<script>alert('Thanks welcome to Our Next Zone ');window.location.href='/dashboard'</script>")
-        else:
-                return HttpResponse(
-                    "<script>alert('Inavlid userid Or Password');window.location.href='/loginreg'</script>")
+# Order Management API
+@api_view(['GET'])
+def order_mgmt_api(request):
+    if request.session.get("aid"):
+        return Response({"message": "Order management zone"})
+    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
-    except ALogin.DoesNotExist:
-        return HttpResponse(
-            "<script>alert('Inavlid userid Or Password');window.location.href='/loginreg'</script>")
+# Product Management API
+@api_view(['GET'])
+def product_mgmt_api(request):
+    if request.session.get("aid"):
+        products = ProductModel.objects.all()
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
+# Add Product Page Placeholder (GET only)
+@api_view(['GET'])
+def add_product_api(request):
+    if request.session.get("aid"):
+        return Response({"message": "Ready to add products"})
+    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+
+# Admin Logout API
+@api_view(['POST'])
+def admin_logout_api(request):
+    try:
+        del request.session['aid']
+    except KeyError:
+        pass
+    return Response({"message": "Logged out successfully"}, status=status.HTTP_200_OK)
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from rest_framework import status
+from General.models import contactModel, ProductModel
+from django.contrib.sessions.models import Session
+
+# Sample serializers (You need to create these)
+from .serializers import ContactSerializer, ProductSerializer
+
+# Dashboard API
+@api_view(['GET'])
+def dashboard_api(request):
+    if request.session.get("aid"):
+        return Response({"message": "Welcome to the Dashboard"}, status=status.HTTP_200_OK)
+    else:
+        return Response({"error": "Unauthorized. Login first."}, status=status.HTTP_401_UNAUTHORIZED)
+
+# Contact Management API
+@api_view(['GET'])
+def contact_mgmt_api(request):
+    if request.session.get("aid"):
+        contacts = contactModel.objects.all()
+        serializer = ContactSerializer(contacts, many=True)
+        return Response(serializer.data)
+    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+
+# Delete Contact API
+@api_view(['DELETE'])
+def delete_contact_api(request, id):
+    try:
+        contact = contactModel.objects.get(id=id)
+        contact.delete()
+        return Response({"message": "Contact deleted"}, status=status.HTTP_200_OK)
+    except contactModel.DoesNotExist:
+        return Response({"error": "Contact not found"}, status=status.HTTP_404_NOT_FOUND)
+
+# Order Management API
+@api_view(['GET'])
+def order_mgmt_api(request):
+    if request.session.get("aid"):
+        return Response({"message": "Order management zone"})
+    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+
+# Product Management API
+@api_view(['GET'])
+def product_mgmt_api(request):
+    if request.session.get("aid"):
+        products = ProductModel.objects.all()
+        serializer = ProductSerializer(products, many=True)
+        return Response(serializer.data)
+    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+
+# Add Product Page Placeholder (GET only)
+@api_view(['GET'])
+def add_product_api(request):
+    if request.session.get("aid"):
+        return Response({"message": "Ready to add products"})
+    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+
+# Admin Logout API
+@api_view(['POST'])
+def admin_logout_api(request):
+    try:
+        del request.session['aid']
+    except KeyError:
+        pass
+    return Response({"message": "Logged out successfully"}, status=status.HTTP_200_OK)
+
+#registter and login logic
+
+@csrf_exempt
+def register_api(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        username = data.get("username")
+        email = data.get("email")
+        password = data.get("password")
+
+        if signupdata.objects.filter(susername=username).exists():
+            return JsonResponse({"success": False, "message": "Username already exists"}, status=400)
+
+        signupdata.objects.create(susername=username, semail=email, spassword=password)
+        return JsonResponse({"success": True, "message": "Registration successful"})
+
+    return JsonResponse({"error": "Invalid request method"}, status=405)
 
 
 @csrf_exempt
-def check(request):
-    return  render(request,"checkout.html")
+def login_api(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        username = data.get("username")
+        password = data.get("password")
 
-def userorder(request):
-    if request.method=='POST':
-        fname=request.POST.get("name")
-        mob=request.POST.get("mob")
-        lmark=request.POST.get("lmark")
-        town=request.POST.get("town")
-        addtype=request.POST.get("atype")
-        data=userdata(fname=fname,mob=mob,lmark=lmark,town=town,atype=addtype)
-        data.save()
-        return HttpResponse(
-            "<script>alert('Thanks Your Order is completed on same address ');window.location.href='/checkout'</script>")
-    else:
-        return HttpResponse("<script>alert('Your Order is not completed');window.location.href='/checkout'</script>")
+        try:
+            user = signupdata.objects.get(susername=username, spassword=password)
+            request.session['aid'] = user.id
+            return JsonResponse({"success": True, "message": "Login successful", "user_id": user.id})
+        except signupdata.DoesNotExist:
+            return JsonResponse({"success": False, "message": "Invalid credentials"}, status=401)
 
-
-def payment(request):
-    return render(request,"payment.html")
-
-def priv(request):
-    return render(request,"privacy.html")
-
-def faq(request):
-    return render(request,"faqs.html")
-
-def singl(request):
-    return render(request,"single.html")
-def signupdata(request):
-    # return render (request,'signup.html')
-# def SignupPage(request):
-    if request.method=='POST':
-        susername=request.POST.get('susername')
-        semail=request.POST.get('semail')
-        spassword=request.POST.get('spass1')
-        spass2=request.POST.get('spass2')
-
-        if spassword!=spass2:
-            return HttpResponse("Your password and conform password are not Same!!")
-        else:
-
-            my_user=User.objects.create_user(susername,semail,spassword,)
-            my_user.save()
-            return redirect('loginreg')
+    return JsonResponse({"error": "Invalid request method"}, status=405)

@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'General.apps.GeneralConfig',
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -32,6 +34,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",  # Angular dev server
 ]
 
 ROOT_URLCONF = 'GroceryWeb.urls'
@@ -118,9 +126,4 @@ EMAIL_HOST='smtp.gmail.com'
 EMAIL_HOST_USER='kamlapurisurendra1419@gmail.com'
 EMAIL_HOST_PASSWORD='itsurendra@14191419'
 EMAIL_PORT=587
-
-
-
-
-
-
+CORS_ORIGIN_ALLOW_ALL = True

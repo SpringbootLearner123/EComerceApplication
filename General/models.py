@@ -30,4 +30,5 @@ class signupdata(models.Model):
     susername=models.CharField(max_length=120)
     semail=models.CharField(max_length=50)
     spassword=models.CharField(max_length=20)
-
+def __str__(self):
+        return self.susername
