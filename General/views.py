@@ -15,19 +15,16 @@ import json
 # Dashboard API
 @api_view(['GET'])
 def dashboard_api(request):
-    if request.session.get("aid"):
+    
         return Response({"message": "Welcome to the Dashboard"}, status=status.HTTP_200_OK)
-    else:
-        return Response({"error": "Unauthorized. Login first."}, status=status.HTTP_401_UNAUTHORIZED)
-
+    
 # Contact Management API
 @api_view(['GET'])
 def contact_mgmt_api(request):
-    if request.session.get("aid"):
+
         contacts = contactModel.objects.all()
         serializer = ContactSerializer(contacts, many=True)
         return Response(serializer.data)
-    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
 # Delete Contact API
 @api_view(['DELETE'])
@@ -42,25 +39,19 @@ def delete_contact_api(request, id):
 # Order Management API
 @api_view(['GET'])
 def order_mgmt_api(request):
-    if request.session.get("aid"):
         return Response({"message": "Order management zone"})
-    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
 # Product Management API
 @api_view(['GET'])
 def product_mgmt_api(request):
-    if request.session.get("aid"):
         products = ProductModel.objects.all()
         serializer = ProductSerializer(products, many=True)
         return Response(serializer.data)
-    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
 # Add Product Page Placeholder (GET only)
 @api_view(['GET'])
 def add_product_api(request):
-    if request.session.get("aid"):
         return Response({"message": "Ready to add products"})
-    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
 # Admin Logout API
 @api_view(['POST'])
@@ -82,19 +73,14 @@ from .serializers import ContactSerializer, ProductSerializer
 # Dashboard API
 @api_view(['GET'])
 def dashboard_api(request):
-    if request.session.get("aid"):
         return Response({"message": "Welcome to the Dashboard"}, status=status.HTTP_200_OK)
-    else:
-        return Response({"error": "Unauthorized. Login first."}, status=status.HTTP_401_UNAUTHORIZED)
-
+   
 # Contact Management API
 @api_view(['GET'])
 def contact_mgmt_api(request):
-    if request.session.get("aid"):
         contacts = contactModel.objects.all()
         serializer = ContactSerializer(contacts, many=True)
         return Response(serializer.data)
-    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
 # Delete Contact API
 @api_view(['DELETE'])
@@ -109,25 +95,19 @@ def delete_contact_api(request, id):
 # Order Management API
 @api_view(['GET'])
 def order_mgmt_api(request):
-    if request.session.get("aid"):
         return Response({"message": "Order management zone"})
-    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
 
 # Product Management API
 @api_view(['GET'])
 def product_mgmt_api(request):
-    if request.session.get("aid"):
-        products = ProductModel.objects.all()
-        serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
-    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+    products = ProductModel.objects.all()
+    serializer = ProductSerializer(products, many=True)
+    return Response(serializer.data)
 
 # Add Product Page Placeholder (GET only)
 @api_view(['GET'])
 def add_product_api(request):
-    if request.session.get("aid"):
-        return Response({"message": "Ready to add products"})
-    return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+    return Response({"message": "Ready to add products"})
 
 # Admin Logout API
 @api_view(['POST'])
